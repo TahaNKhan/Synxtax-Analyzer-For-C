@@ -1,0 +1,2803 @@
+Terminals unused in grammar
+
+   MOD
+   AND
+   OR
+   NOT
+
+
+State 27 conflicts: 1 shift/reduce
+State 61 conflicts: 1 shift/reduce
+State 69 conflicts: 1 shift/reduce
+State 86 conflicts: 1 shift/reduce
+State 89 conflicts: 1 reduce/reduce
+State 112 conflicts: 2 shift/reduce
+State 144 conflicts: 2 shift/reduce
+State 145 conflicts: 2 shift/reduce
+State 146 conflicts: 2 shift/reduce
+State 147 conflicts: 2 shift/reduce
+State 148 conflicts: 2 shift/reduce
+State 149 conflicts: 2 shift/reduce
+State 150 conflicts: 2 shift/reduce
+State 151 conflicts: 2 shift/reduce
+State 152 conflicts: 2 shift/reduce
+State 153 conflicts: 2 shift/reduce
+State 156 conflicts: 2 shift/reduce
+State 168 conflicts: 1 shift/reduce
+
+
+Grammar
+
+    0 $accept: Program $end
+
+    1 Program: Decl Program
+    2        | Decl
+
+    3 Decl: VariableDecl
+    4     | FunctionDecl
+    5     | ClassDecl
+    6     | InterfaceDecl
+
+    7 VariableDecl1: VariableDecl VariableDecl1
+    8              | %empty
+
+    9 VariableDecl: Variable SEMICOLON
+
+   10 Variable: Type ID
+
+   11 Type: INT
+   12     | DOUBLE
+   13     | BOOLEAN
+   14     | STRING
+   15     | Type LEFTBRACKET RIGHTBRACKET
+   16     | ID
+
+   17 FunctionDecl: Type ID LEFTPAREN Formals RIGHTPAREN StmtBlock
+   18             | VOID ID LEFTPAREN Formals RIGHTPAREN StmtBlock
+
+   19 Formals: Formals COMMA Variable
+   20        | Variable
+   21        | %empty
+
+   22 ClassDecl: CLASS ID Extends Implements LEFTBRACE Field RIGHTBRACE
+
+   23 Extends: EXTENDS ID
+   24        | %empty
+
+   25 Implements: IMPLEMENTS ids
+   26           | %empty
+
+   27 ids: ID COMMA ids
+   28    | ID
+
+   29 Field: VariableDecl
+   30      | FunctionDecl
+   31      | %empty
+
+   32 InterfaceDecl: INTERFACE ID LEFTBRACE Prototypes RIGHTBRACE
+   33              | INTERFACE ID LEFTBRACE RIGHTBRACE
+
+   34 Prototypes: Prototype Prototypes
+   35           | %empty
+
+   36 Prototype: Type ID LEFTPAREN Formals RIGHTPAREN SEMICOLON
+   37          | VOID ID LEFTPAREN Formals RIGHTPAREN SEMICOLON
+
+   38 StmtBlock: LEFTBRACE VariableDecl1 Stmts RIGHTBRACE
+
+   39 Stmts: Stmt Stmts
+   40      | Stmt
+   41      | %empty
+
+   42 Stmt: ExprStar SEMICOLON
+   43     | IfStmt
+   44     | WhileStmt
+   45     | ForStmt
+   46     | BreakStmt
+   47     | ReturnStmt
+   48     | PrintStmt
+   49     | StmtBlock
+
+   50 IfStmt: IF LEFTPAREN Expr RIGHTPAREN Stmt
+   51       | IF LEFTPAREN Expr RIGHTPAREN Stmt ELSE Stmt
+
+   52 WhileStmt: WHILE LEFTPAREN Expr RIGHTPAREN Stmt
+
+   53 ForStmt: FOR LEFTPAREN ExprStar SEMICOLON Expr SEMICOLON ExprStar RIGHTPAREN Stmt
+
+   54 BreakStmt: BREAK SEMICOLON
+
+   55 ReturnStmt: RETURN ExprStar SEMICOLON
+
+   56 PrintStmt: PRINTLN LEFTPAREN Exprs RIGHTPAREN SEMICOLON
+
+   57 Exprs: Exprs COMMA Expr
+   58      | Expr
+
+   59 Expr: Lvalue ASSIGNOP Expr
+   60     | Constant
+   61     | Lvalue
+   62     | Call
+   63     | LEFTPAREN Expr RIGHTPAREN
+   64     | Expr PLUS Expr
+   65     | Expr MINUS Expr
+   66     | Expr MULTIPLICATION Expr
+   67     | Expr DIVISION Expr
+   68     | MINUS Expr
+   69     | Expr LESS Expr
+   70     | Expr LESSEQUAL Expr
+   71     | Expr GREATER Expr
+   72     | Expr GREATEREQUAL Expr
+   73     | Expr EQUAL Expr
+   74     | Expr NOTEQUAL Expr
+   75     | READLN LEFTPAREN RIGHTPAREN
+   76     | NEWARRAY LEFTPAREN INTCONSTANT COMMA Type RIGHTPAREN
+
+   77 ExprStar: Expr
+   78         | %empty
+
+   79 Lvalue: ID
+   80       | Expr LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr PERIOD ID
+
+   82 Call: ID LEFTPAREN Actuals RIGHTPAREN
+   83     | ID PERIOD ID LEFTPAREN Actuals RIGHTPAREN
+
+   84 Actuals: Expr
+   85        | Expr COMMA Actuals
+   86        | %empty
+
+   87 Constant: DOUBLECONSTANT
+   88         | INTCONSTANT
+   89         | STRINGCONSTANT
+   90         | BOOLEANCONSTANT
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+BOOLEAN (258) 13
+BREAK (259) 54
+CLASS (260) 22
+DOUBLE (261) 12
+ELSE (262) 51
+EXTENDS (263) 23
+FOR (264) 53
+IF (265) 50 51
+IMPLEMENTS (266) 25
+INT (267) 11
+INTERFACE (268) 32 33
+NEWARRAY (269) 76
+PRINTLN (270) 56
+READLN (271) 75
+RETURN (272) 55
+STRING (273) 14
+VOID (274) 18 37
+WHILE (275) 52
+PLUS (276) 64
+MINUS (277) 65 68
+MULTIPLICATION (278) 66
+DIVISION (279) 67
+MOD (280)
+LESS (281) 69
+LESSEQUAL (282) 70
+GREATER (283) 71
+GREATEREQUAL (284) 72
+EQUAL (285) 73
+NOTEQUAL (286) 74
+AND (287)
+OR (288)
+NOT (289)
+ASSIGNOP (290) 59
+SEMICOLON (291) 9 36 37 42 53 54 55 56
+COMMA (292) 19 27 57 76 85
+PERIOD (293) 81 83
+LEFTPAREN (294) 17 18 36 37 50 51 52 53 56 63 75 76 82 83
+RIGHTPAREN (295) 17 18 36 37 50 51 52 53 56 63 75 76 82 83
+LEFTBRACE (296) 22 32 33 38
+RIGHTBRACE (297) 22 32 33 38
+LEFTBRACKET (298) 15 80
+RIGHTBRACKET (299) 15 80
+INTCONSTANT (300) 76 88
+DOUBLECONSTANT (301) 87
+STRINGCONSTANT (302) 89
+BOOLEANCONSTANT (303) 90
+ID (304) 10 16 17 18 22 23 27 28 32 33 36 37 79 81 82 83
+
+
+Nonterminals, with rules where they appear
+
+$accept (50)
+    on left: 0
+Program (51)
+    on left: 1 2, on right: 0 1
+Decl (52)
+    on left: 3 4 5 6, on right: 1 2
+VariableDecl1 (53)
+    on left: 7 8, on right: 7 38
+VariableDecl (54)
+    on left: 9, on right: 3 7 29
+Variable (55)
+    on left: 10, on right: 9 19 20
+Type (56)
+    on left: 11 12 13 14 15 16, on right: 10 15 17 36 76
+FunctionDecl (57)
+    on left: 17 18, on right: 4 30
+Formals (58)
+    on left: 19 20 21, on right: 17 18 19 36 37
+ClassDecl (59)
+    on left: 22, on right: 5
+Extends (60)
+    on left: 23 24, on right: 22
+Implements (61)
+    on left: 25 26, on right: 22
+ids (62)
+    on left: 27 28, on right: 25 27
+Field (63)
+    on left: 29 30 31, on right: 22
+InterfaceDecl (64)
+    on left: 32 33, on right: 6
+Prototypes (65)
+    on left: 34 35, on right: 32 34
+Prototype (66)
+    on left: 36 37, on right: 34
+StmtBlock (67)
+    on left: 38, on right: 17 18 49
+Stmts (68)
+    on left: 39 40 41, on right: 38 39
+Stmt (69)
+    on left: 42 43 44 45 46 47 48 49, on right: 39 40 50 51 52 53
+IfStmt (70)
+    on left: 50 51, on right: 43
+WhileStmt (71)
+    on left: 52, on right: 44
+ForStmt (72)
+    on left: 53, on right: 45
+BreakStmt (73)
+    on left: 54, on right: 46
+ReturnStmt (74)
+    on left: 55, on right: 47
+PrintStmt (75)
+    on left: 56, on right: 48
+Exprs (76)
+    on left: 57 58, on right: 56 57
+Expr (77)
+    on left: 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76,
+    on right: 50 51 52 53 57 58 59 63 64 65 66 67 68 69 70 71 72 73
+    74 77 80 81 84 85
+ExprStar (78)
+    on left: 77 78, on right: 42 53 55
+Lvalue (79)
+    on left: 79 80 81, on right: 59 61
+Call (80)
+    on left: 82 83, on right: 62
+Actuals (81)
+    on left: 84 85 86, on right: 82 83 85
+Constant (82)
+    on left: 87 88 89 90, on right: 60
+
+
+State 0
+
+    0 $accept: . Program $end
+
+    BOOLEAN    shift, and go to state 1
+    CLASS      shift, and go to state 2
+    DOUBLE     shift, and go to state 3
+    INT        shift, and go to state 4
+    INTERFACE  shift, and go to state 5
+    STRING     shift, and go to state 6
+    VOID       shift, and go to state 7
+    ID         shift, and go to state 8
+
+    Program        go to state 9
+    Decl           go to state 10
+    VariableDecl   go to state 11
+    Variable       go to state 12
+    Type           go to state 13
+    FunctionDecl   go to state 14
+    ClassDecl      go to state 15
+    InterfaceDecl  go to state 16
+
+
+State 1
+
+   13 Type: BOOLEAN .
+
+    $default  reduce using rule 13 (Type)
+
+
+State 2
+
+   22 ClassDecl: CLASS . ID Extends Implements LEFTBRACE Field RIGHTBRACE
+
+    ID  shift, and go to state 17
+
+
+State 3
+
+   12 Type: DOUBLE .
+
+    $default  reduce using rule 12 (Type)
+
+
+State 4
+
+   11 Type: INT .
+
+    $default  reduce using rule 11 (Type)
+
+
+State 5
+
+   32 InterfaceDecl: INTERFACE . ID LEFTBRACE Prototypes RIGHTBRACE
+   33              | INTERFACE . ID LEFTBRACE RIGHTBRACE
+
+    ID  shift, and go to state 18
+
+
+State 6
+
+   14 Type: STRING .
+
+    $default  reduce using rule 14 (Type)
+
+
+State 7
+
+   18 FunctionDecl: VOID . ID LEFTPAREN Formals RIGHTPAREN StmtBlock
+
+    ID  shift, and go to state 19
+
+
+State 8
+
+   16 Type: ID .
+
+    $default  reduce using rule 16 (Type)
+
+
+State 9
+
+    0 $accept: Program . $end
+
+    $end  shift, and go to state 20
+
+
+State 10
+
+    1 Program: Decl . Program
+    2        | Decl .
+
+    BOOLEAN    shift, and go to state 1
+    CLASS      shift, and go to state 2
+    DOUBLE     shift, and go to state 3
+    INT        shift, and go to state 4
+    INTERFACE  shift, and go to state 5
+    STRING     shift, and go to state 6
+    VOID       shift, and go to state 7
+    ID         shift, and go to state 8
+
+    $default  reduce using rule 2 (Program)
+
+    Program        go to state 21
+    Decl           go to state 10
+    VariableDecl   go to state 11
+    Variable       go to state 12
+    Type           go to state 13
+    FunctionDecl   go to state 14
+    ClassDecl      go to state 15
+    InterfaceDecl  go to state 16
+
+
+State 11
+
+    3 Decl: VariableDecl .
+
+    $default  reduce using rule 3 (Decl)
+
+
+State 12
+
+    9 VariableDecl: Variable . SEMICOLON
+
+    SEMICOLON  shift, and go to state 22
+
+
+State 13
+
+   10 Variable: Type . ID
+   15 Type: Type . LEFTBRACKET RIGHTBRACKET
+   17 FunctionDecl: Type . ID LEFTPAREN Formals RIGHTPAREN StmtBlock
+
+    LEFTBRACKET  shift, and go to state 23
+    ID           shift, and go to state 24
+
+
+State 14
+
+    4 Decl: FunctionDecl .
+
+    $default  reduce using rule 4 (Decl)
+
+
+State 15
+
+    5 Decl: ClassDecl .
+
+    $default  reduce using rule 5 (Decl)
+
+
+State 16
+
+    6 Decl: InterfaceDecl .
+
+    $default  reduce using rule 6 (Decl)
+
+
+State 17
+
+   22 ClassDecl: CLASS ID . Extends Implements LEFTBRACE Field RIGHTBRACE
+
+    EXTENDS  shift, and go to state 25
+
+    $default  reduce using rule 24 (Extends)
+
+    Extends  go to state 26
+
+
+State 18
+
+   32 InterfaceDecl: INTERFACE ID . LEFTBRACE Prototypes RIGHTBRACE
+   33              | INTERFACE ID . LEFTBRACE RIGHTBRACE
+
+    LEFTBRACE  shift, and go to state 27
+
+
+State 19
+
+   18 FunctionDecl: VOID ID . LEFTPAREN Formals RIGHTPAREN StmtBlock
+
+    LEFTPAREN  shift, and go to state 28
+
+
+State 20
+
+    0 $accept: Program $end .
+
+    $default  accept
+
+
+State 21
+
+    1 Program: Decl Program .
+
+    $default  reduce using rule 1 (Program)
+
+
+State 22
+
+    9 VariableDecl: Variable SEMICOLON .
+
+    $default  reduce using rule 9 (VariableDecl)
+
+
+State 23
+
+   15 Type: Type LEFTBRACKET . RIGHTBRACKET
+
+    RIGHTBRACKET  shift, and go to state 29
+
+
+State 24
+
+   10 Variable: Type ID .
+   17 FunctionDecl: Type ID . LEFTPAREN Formals RIGHTPAREN StmtBlock
+
+    LEFTPAREN  shift, and go to state 30
+
+    $default  reduce using rule 10 (Variable)
+
+
+State 25
+
+   23 Extends: EXTENDS . ID
+
+    ID  shift, and go to state 31
+
+
+State 26
+
+   22 ClassDecl: CLASS ID Extends . Implements LEFTBRACE Field RIGHTBRACE
+
+    IMPLEMENTS  shift, and go to state 32
+
+    $default  reduce using rule 26 (Implements)
+
+    Implements  go to state 33
+
+
+State 27
+
+   32 InterfaceDecl: INTERFACE ID LEFTBRACE . Prototypes RIGHTBRACE
+   33              | INTERFACE ID LEFTBRACE . RIGHTBRACE
+
+    BOOLEAN     shift, and go to state 1
+    DOUBLE      shift, and go to state 3
+    INT         shift, and go to state 4
+    STRING      shift, and go to state 6
+    VOID        shift, and go to state 34
+    RIGHTBRACE  shift, and go to state 35
+    ID          shift, and go to state 8
+
+    RIGHTBRACE  [reduce using rule 35 (Prototypes)]
+
+    Type        go to state 36
+    Prototypes  go to state 37
+    Prototype   go to state 38
+
+
+State 28
+
+   18 FunctionDecl: VOID ID LEFTPAREN . Formals RIGHTPAREN StmtBlock
+
+    BOOLEAN  shift, and go to state 1
+    DOUBLE   shift, and go to state 3
+    INT      shift, and go to state 4
+    STRING   shift, and go to state 6
+    ID       shift, and go to state 8
+
+    $default  reduce using rule 21 (Formals)
+
+    Variable  go to state 39
+    Type      go to state 40
+    Formals   go to state 41
+
+
+State 29
+
+   15 Type: Type LEFTBRACKET RIGHTBRACKET .
+
+    $default  reduce using rule 15 (Type)
+
+
+State 30
+
+   17 FunctionDecl: Type ID LEFTPAREN . Formals RIGHTPAREN StmtBlock
+
+    BOOLEAN  shift, and go to state 1
+    DOUBLE   shift, and go to state 3
+    INT      shift, and go to state 4
+    STRING   shift, and go to state 6
+    ID       shift, and go to state 8
+
+    $default  reduce using rule 21 (Formals)
+
+    Variable  go to state 39
+    Type      go to state 40
+    Formals   go to state 42
+
+
+State 31
+
+   23 Extends: EXTENDS ID .
+
+    $default  reduce using rule 23 (Extends)
+
+
+State 32
+
+   25 Implements: IMPLEMENTS . ids
+
+    ID  shift, and go to state 43
+
+    ids  go to state 44
+
+
+State 33
+
+   22 ClassDecl: CLASS ID Extends Implements . LEFTBRACE Field RIGHTBRACE
+
+    LEFTBRACE  shift, and go to state 45
+
+
+State 34
+
+   37 Prototype: VOID . ID LEFTPAREN Formals RIGHTPAREN SEMICOLON
+
+    ID  shift, and go to state 46
+
+
+State 35
+
+   33 InterfaceDecl: INTERFACE ID LEFTBRACE RIGHTBRACE .
+
+    $default  reduce using rule 33 (InterfaceDecl)
+
+
+State 36
+
+   15 Type: Type . LEFTBRACKET RIGHTBRACKET
+   36 Prototype: Type . ID LEFTPAREN Formals RIGHTPAREN SEMICOLON
+
+    LEFTBRACKET  shift, and go to state 23
+    ID           shift, and go to state 47
+
+
+State 37
+
+   32 InterfaceDecl: INTERFACE ID LEFTBRACE Prototypes . RIGHTBRACE
+
+    RIGHTBRACE  shift, and go to state 48
+
+
+State 38
+
+   34 Prototypes: Prototype . Prototypes
+
+    BOOLEAN  shift, and go to state 1
+    DOUBLE   shift, and go to state 3
+    INT      shift, and go to state 4
+    STRING   shift, and go to state 6
+    VOID     shift, and go to state 34
+    ID       shift, and go to state 8
+
+    $default  reduce using rule 35 (Prototypes)
+
+    Type        go to state 36
+    Prototypes  go to state 49
+    Prototype   go to state 38
+
+
+State 39
+
+   20 Formals: Variable .
+
+    $default  reduce using rule 20 (Formals)
+
+
+State 40
+
+   10 Variable: Type . ID
+   15 Type: Type . LEFTBRACKET RIGHTBRACKET
+
+    LEFTBRACKET  shift, and go to state 23
+    ID           shift, and go to state 50
+
+
+State 41
+
+   18 FunctionDecl: VOID ID LEFTPAREN Formals . RIGHTPAREN StmtBlock
+   19 Formals: Formals . COMMA Variable
+
+    COMMA       shift, and go to state 51
+    RIGHTPAREN  shift, and go to state 52
+
+
+State 42
+
+   17 FunctionDecl: Type ID LEFTPAREN Formals . RIGHTPAREN StmtBlock
+   19 Formals: Formals . COMMA Variable
+
+    COMMA       shift, and go to state 51
+    RIGHTPAREN  shift, and go to state 53
+
+
+State 43
+
+   27 ids: ID . COMMA ids
+   28    | ID .
+
+    COMMA  shift, and go to state 54
+
+    $default  reduce using rule 28 (ids)
+
+
+State 44
+
+   25 Implements: IMPLEMENTS ids .
+
+    $default  reduce using rule 25 (Implements)
+
+
+State 45
+
+   22 ClassDecl: CLASS ID Extends Implements LEFTBRACE . Field RIGHTBRACE
+
+    BOOLEAN  shift, and go to state 1
+    DOUBLE   shift, and go to state 3
+    INT      shift, and go to state 4
+    STRING   shift, and go to state 6
+    VOID     shift, and go to state 7
+    ID       shift, and go to state 8
+
+    $default  reduce using rule 31 (Field)
+
+    VariableDecl  go to state 55
+    Variable      go to state 12
+    Type          go to state 13
+    FunctionDecl  go to state 56
+    Field         go to state 57
+
+
+State 46
+
+   37 Prototype: VOID ID . LEFTPAREN Formals RIGHTPAREN SEMICOLON
+
+    LEFTPAREN  shift, and go to state 58
+
+
+State 47
+
+   36 Prototype: Type ID . LEFTPAREN Formals RIGHTPAREN SEMICOLON
+
+    LEFTPAREN  shift, and go to state 59
+
+
+State 48
+
+   32 InterfaceDecl: INTERFACE ID LEFTBRACE Prototypes RIGHTBRACE .
+
+    $default  reduce using rule 32 (InterfaceDecl)
+
+
+State 49
+
+   34 Prototypes: Prototype Prototypes .
+
+    $default  reduce using rule 34 (Prototypes)
+
+
+State 50
+
+   10 Variable: Type ID .
+
+    $default  reduce using rule 10 (Variable)
+
+
+State 51
+
+   19 Formals: Formals COMMA . Variable
+
+    BOOLEAN  shift, and go to state 1
+    DOUBLE   shift, and go to state 3
+    INT      shift, and go to state 4
+    STRING   shift, and go to state 6
+    ID       shift, and go to state 8
+
+    Variable  go to state 60
+    Type      go to state 40
+
+
+State 52
+
+   18 FunctionDecl: VOID ID LEFTPAREN Formals RIGHTPAREN . StmtBlock
+
+    LEFTBRACE  shift, and go to state 61
+
+    StmtBlock  go to state 62
+
+
+State 53
+
+   17 FunctionDecl: Type ID LEFTPAREN Formals RIGHTPAREN . StmtBlock
+
+    LEFTBRACE  shift, and go to state 61
+
+    StmtBlock  go to state 63
+
+
+State 54
+
+   27 ids: ID COMMA . ids
+
+    ID  shift, and go to state 43
+
+    ids  go to state 64
+
+
+State 55
+
+   29 Field: VariableDecl .
+
+    $default  reduce using rule 29 (Field)
+
+
+State 56
+
+   30 Field: FunctionDecl .
+
+    $default  reduce using rule 30 (Field)
+
+
+State 57
+
+   22 ClassDecl: CLASS ID Extends Implements LEFTBRACE Field . RIGHTBRACE
+
+    RIGHTBRACE  shift, and go to state 65
+
+
+State 58
+
+   37 Prototype: VOID ID LEFTPAREN . Formals RIGHTPAREN SEMICOLON
+
+    BOOLEAN  shift, and go to state 1
+    DOUBLE   shift, and go to state 3
+    INT      shift, and go to state 4
+    STRING   shift, and go to state 6
+    ID       shift, and go to state 8
+
+    $default  reduce using rule 21 (Formals)
+
+    Variable  go to state 39
+    Type      go to state 40
+    Formals   go to state 66
+
+
+State 59
+
+   36 Prototype: Type ID LEFTPAREN . Formals RIGHTPAREN SEMICOLON
+
+    BOOLEAN  shift, and go to state 1
+    DOUBLE   shift, and go to state 3
+    INT      shift, and go to state 4
+    STRING   shift, and go to state 6
+    ID       shift, and go to state 8
+
+    $default  reduce using rule 21 (Formals)
+
+    Variable  go to state 39
+    Type      go to state 40
+    Formals   go to state 67
+
+
+State 60
+
+   19 Formals: Formals COMMA Variable .
+
+    $default  reduce using rule 19 (Formals)
+
+
+State 61
+
+   38 StmtBlock: LEFTBRACE . VariableDecl1 Stmts RIGHTBRACE
+
+    BOOLEAN  shift, and go to state 1
+    DOUBLE   shift, and go to state 3
+    INT      shift, and go to state 4
+    STRING   shift, and go to state 6
+    ID       shift, and go to state 8
+
+    ID        [reduce using rule 8 (VariableDecl1)]
+    $default  reduce using rule 8 (VariableDecl1)
+
+    VariableDecl1  go to state 68
+    VariableDecl   go to state 69
+    Variable       go to state 12
+    Type           go to state 40
+
+
+State 62
+
+   18 FunctionDecl: VOID ID LEFTPAREN Formals RIGHTPAREN StmtBlock .
+
+    $default  reduce using rule 18 (FunctionDecl)
+
+
+State 63
+
+   17 FunctionDecl: Type ID LEFTPAREN Formals RIGHTPAREN StmtBlock .
+
+    $default  reduce using rule 17 (FunctionDecl)
+
+
+State 64
+
+   27 ids: ID COMMA ids .
+
+    $default  reduce using rule 27 (ids)
+
+
+State 65
+
+   22 ClassDecl: CLASS ID Extends Implements LEFTBRACE Field RIGHTBRACE .
+
+    $default  reduce using rule 22 (ClassDecl)
+
+
+State 66
+
+   19 Formals: Formals . COMMA Variable
+   37 Prototype: VOID ID LEFTPAREN Formals . RIGHTPAREN SEMICOLON
+
+    COMMA       shift, and go to state 51
+    RIGHTPAREN  shift, and go to state 70
+
+
+State 67
+
+   19 Formals: Formals . COMMA Variable
+   36 Prototype: Type ID LEFTPAREN Formals . RIGHTPAREN SEMICOLON
+
+    COMMA       shift, and go to state 51
+    RIGHTPAREN  shift, and go to state 71
+
+
+State 68
+
+   38 StmtBlock: LEFTBRACE VariableDecl1 . Stmts RIGHTBRACE
+
+    BREAK            shift, and go to state 72
+    FOR              shift, and go to state 73
+    IF               shift, and go to state 74
+    NEWARRAY         shift, and go to state 75
+    PRINTLN          shift, and go to state 76
+    READLN           shift, and go to state 77
+    RETURN           shift, and go to state 78
+    WHILE            shift, and go to state 79
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    LEFTBRACE        shift, and go to state 61
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    SEMICOLON  reduce using rule 78 (ExprStar)
+    $default   reduce using rule 41 (Stmts)
+
+    StmtBlock   go to state 87
+    Stmts       go to state 88
+    Stmt        go to state 89
+    IfStmt      go to state 90
+    WhileStmt   go to state 91
+    ForStmt     go to state 92
+    BreakStmt   go to state 93
+    ReturnStmt  go to state 94
+    PrintStmt   go to state 95
+    Expr        go to state 96
+    ExprStar    go to state 97
+    Lvalue      go to state 98
+    Call        go to state 99
+    Constant    go to state 100
+
+
+State 69
+
+    7 VariableDecl1: VariableDecl . VariableDecl1
+
+    BOOLEAN  shift, and go to state 1
+    DOUBLE   shift, and go to state 3
+    INT      shift, and go to state 4
+    STRING   shift, and go to state 6
+    ID       shift, and go to state 8
+
+    ID        [reduce using rule 8 (VariableDecl1)]
+    $default  reduce using rule 8 (VariableDecl1)
+
+    VariableDecl1  go to state 101
+    VariableDecl   go to state 69
+    Variable       go to state 12
+    Type           go to state 40
+
+
+State 70
+
+   37 Prototype: VOID ID LEFTPAREN Formals RIGHTPAREN . SEMICOLON
+
+    SEMICOLON  shift, and go to state 102
+
+
+State 71
+
+   36 Prototype: Type ID LEFTPAREN Formals RIGHTPAREN . SEMICOLON
+
+    SEMICOLON  shift, and go to state 103
+
+
+State 72
+
+   54 BreakStmt: BREAK . SEMICOLON
+
+    SEMICOLON  shift, and go to state 104
+
+
+State 73
+
+   53 ForStmt: FOR . LEFTPAREN ExprStar SEMICOLON Expr SEMICOLON ExprStar RIGHTPAREN Stmt
+
+    LEFTPAREN  shift, and go to state 105
+
+
+State 74
+
+   50 IfStmt: IF . LEFTPAREN Expr RIGHTPAREN Stmt
+   51       | IF . LEFTPAREN Expr RIGHTPAREN Stmt ELSE Stmt
+
+    LEFTPAREN  shift, and go to state 106
+
+
+State 75
+
+   76 Expr: NEWARRAY . LEFTPAREN INTCONSTANT COMMA Type RIGHTPAREN
+
+    LEFTPAREN  shift, and go to state 107
+
+
+State 76
+
+   56 PrintStmt: PRINTLN . LEFTPAREN Exprs RIGHTPAREN SEMICOLON
+
+    LEFTPAREN  shift, and go to state 108
+
+
+State 77
+
+   75 Expr: READLN . LEFTPAREN RIGHTPAREN
+
+    LEFTPAREN  shift, and go to state 109
+
+
+State 78
+
+   55 ReturnStmt: RETURN . ExprStar SEMICOLON
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    $default  reduce using rule 78 (ExprStar)
+
+    Expr      go to state 96
+    ExprStar  go to state 110
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 79
+
+   52 WhileStmt: WHILE . LEFTPAREN Expr RIGHTPAREN Stmt
+
+    LEFTPAREN  shift, and go to state 111
+
+
+State 80
+
+   68 Expr: MINUS . Expr
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    Expr      go to state 112
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 81
+
+   63 Expr: LEFTPAREN . Expr RIGHTPAREN
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    Expr      go to state 113
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 82
+
+   88 Constant: INTCONSTANT .
+
+    $default  reduce using rule 88 (Constant)
+
+
+State 83
+
+   87 Constant: DOUBLECONSTANT .
+
+    $default  reduce using rule 87 (Constant)
+
+
+State 84
+
+   89 Constant: STRINGCONSTANT .
+
+    $default  reduce using rule 89 (Constant)
+
+
+State 85
+
+   90 Constant: BOOLEANCONSTANT .
+
+    $default  reduce using rule 90 (Constant)
+
+
+State 86
+
+   79 Lvalue: ID .
+   82 Call: ID . LEFTPAREN Actuals RIGHTPAREN
+   83     | ID . PERIOD ID LEFTPAREN Actuals RIGHTPAREN
+
+    PERIOD     shift, and go to state 114
+    LEFTPAREN  shift, and go to state 115
+
+    PERIOD    [reduce using rule 79 (Lvalue)]
+    $default  reduce using rule 79 (Lvalue)
+
+
+State 87
+
+   49 Stmt: StmtBlock .
+
+    $default  reduce using rule 49 (Stmt)
+
+
+State 88
+
+   38 StmtBlock: LEFTBRACE VariableDecl1 Stmts . RIGHTBRACE
+
+    RIGHTBRACE  shift, and go to state 116
+
+
+State 89
+
+   39 Stmts: Stmt . Stmts
+   40      | Stmt .
+
+    BREAK            shift, and go to state 72
+    FOR              shift, and go to state 73
+    IF               shift, and go to state 74
+    NEWARRAY         shift, and go to state 75
+    PRINTLN          shift, and go to state 76
+    READLN           shift, and go to state 77
+    RETURN           shift, and go to state 78
+    WHILE            shift, and go to state 79
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    LEFTBRACE        shift, and go to state 61
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    SEMICOLON   reduce using rule 78 (ExprStar)
+    RIGHTBRACE  reduce using rule 40 (Stmts)
+    RIGHTBRACE  [reduce using rule 41 (Stmts)]
+    $default    reduce using rule 40 (Stmts)
+
+    StmtBlock   go to state 87
+    Stmts       go to state 117
+    Stmt        go to state 89
+    IfStmt      go to state 90
+    WhileStmt   go to state 91
+    ForStmt     go to state 92
+    BreakStmt   go to state 93
+    ReturnStmt  go to state 94
+    PrintStmt   go to state 95
+    Expr        go to state 96
+    ExprStar    go to state 97
+    Lvalue      go to state 98
+    Call        go to state 99
+    Constant    go to state 100
+
+
+State 90
+
+   43 Stmt: IfStmt .
+
+    $default  reduce using rule 43 (Stmt)
+
+
+State 91
+
+   44 Stmt: WhileStmt .
+
+    $default  reduce using rule 44 (Stmt)
+
+
+State 92
+
+   45 Stmt: ForStmt .
+
+    $default  reduce using rule 45 (Stmt)
+
+
+State 93
+
+   46 Stmt: BreakStmt .
+
+    $default  reduce using rule 46 (Stmt)
+
+
+State 94
+
+   47 Stmt: ReturnStmt .
+
+    $default  reduce using rule 47 (Stmt)
+
+
+State 95
+
+   48 Stmt: PrintStmt .
+
+    $default  reduce using rule 48 (Stmt)
+
+
+State 96
+
+   64 Expr: Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   77 ExprStar: Expr .
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    PLUS            shift, and go to state 118
+    MINUS           shift, and go to state 119
+    MULTIPLICATION  shift, and go to state 120
+    DIVISION        shift, and go to state 121
+    LESS            shift, and go to state 122
+    LESSEQUAL       shift, and go to state 123
+    GREATER         shift, and go to state 124
+    GREATEREQUAL    shift, and go to state 125
+    EQUAL           shift, and go to state 126
+    NOTEQUAL        shift, and go to state 127
+    PERIOD          shift, and go to state 128
+    LEFTBRACKET     shift, and go to state 129
+
+    $default  reduce using rule 77 (ExprStar)
+
+
+State 97
+
+   42 Stmt: ExprStar . SEMICOLON
+
+    SEMICOLON  shift, and go to state 130
+
+
+State 98
+
+   59 Expr: Lvalue . ASSIGNOP Expr
+   61     | Lvalue .
+
+    ASSIGNOP  shift, and go to state 131
+
+    $default  reduce using rule 61 (Expr)
+
+
+State 99
+
+   62 Expr: Call .
+
+    $default  reduce using rule 62 (Expr)
+
+
+State 100
+
+   60 Expr: Constant .
+
+    $default  reduce using rule 60 (Expr)
+
+
+State 101
+
+    7 VariableDecl1: VariableDecl VariableDecl1 .
+
+    $default  reduce using rule 7 (VariableDecl1)
+
+
+State 102
+
+   37 Prototype: VOID ID LEFTPAREN Formals RIGHTPAREN SEMICOLON .
+
+    $default  reduce using rule 37 (Prototype)
+
+
+State 103
+
+   36 Prototype: Type ID LEFTPAREN Formals RIGHTPAREN SEMICOLON .
+
+    $default  reduce using rule 36 (Prototype)
+
+
+State 104
+
+   54 BreakStmt: BREAK SEMICOLON .
+
+    $default  reduce using rule 54 (BreakStmt)
+
+
+State 105
+
+   53 ForStmt: FOR LEFTPAREN . ExprStar SEMICOLON Expr SEMICOLON ExprStar RIGHTPAREN Stmt
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    $default  reduce using rule 78 (ExprStar)
+
+    Expr      go to state 96
+    ExprStar  go to state 132
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 106
+
+   50 IfStmt: IF LEFTPAREN . Expr RIGHTPAREN Stmt
+   51       | IF LEFTPAREN . Expr RIGHTPAREN Stmt ELSE Stmt
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    Expr      go to state 133
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 107
+
+   76 Expr: NEWARRAY LEFTPAREN . INTCONSTANT COMMA Type RIGHTPAREN
+
+    INTCONSTANT  shift, and go to state 134
+
+
+State 108
+
+   56 PrintStmt: PRINTLN LEFTPAREN . Exprs RIGHTPAREN SEMICOLON
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    Exprs     go to state 135
+    Expr      go to state 136
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 109
+
+   75 Expr: READLN LEFTPAREN . RIGHTPAREN
+
+    RIGHTPAREN  shift, and go to state 137
+
+
+State 110
+
+   55 ReturnStmt: RETURN ExprStar . SEMICOLON
+
+    SEMICOLON  shift, and go to state 138
+
+
+State 111
+
+   52 WhileStmt: WHILE LEFTPAREN . Expr RIGHTPAREN Stmt
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    Expr      go to state 139
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 112
+
+   64 Expr: Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   68     | MINUS Expr .
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    MULTIPLICATION  shift, and go to state 120
+    DIVISION        shift, and go to state 121
+    PERIOD          shift, and go to state 128
+    LEFTBRACKET     shift, and go to state 129
+
+    PERIOD       [reduce using rule 68 (Expr)]
+    LEFTBRACKET  [reduce using rule 68 (Expr)]
+    $default     reduce using rule 68 (Expr)
+
+
+State 113
+
+   63 Expr: LEFTPAREN Expr . RIGHTPAREN
+   64     | Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    PLUS            shift, and go to state 118
+    MINUS           shift, and go to state 119
+    MULTIPLICATION  shift, and go to state 120
+    DIVISION        shift, and go to state 121
+    LESS            shift, and go to state 122
+    LESSEQUAL       shift, and go to state 123
+    GREATER         shift, and go to state 124
+    GREATEREQUAL    shift, and go to state 125
+    EQUAL           shift, and go to state 126
+    NOTEQUAL        shift, and go to state 127
+    PERIOD          shift, and go to state 128
+    RIGHTPAREN      shift, and go to state 140
+    LEFTBRACKET     shift, and go to state 129
+
+
+State 114
+
+   83 Call: ID PERIOD . ID LEFTPAREN Actuals RIGHTPAREN
+
+    ID  shift, and go to state 141
+
+
+State 115
+
+   82 Call: ID LEFTPAREN . Actuals RIGHTPAREN
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    $default  reduce using rule 86 (Actuals)
+
+    Expr      go to state 142
+    Lvalue    go to state 98
+    Call      go to state 99
+    Actuals   go to state 143
+    Constant  go to state 100
+
+
+State 116
+
+   38 StmtBlock: LEFTBRACE VariableDecl1 Stmts RIGHTBRACE .
+
+    $default  reduce using rule 38 (StmtBlock)
+
+
+State 117
+
+   39 Stmts: Stmt Stmts .
+
+    $default  reduce using rule 39 (Stmts)
+
+
+State 118
+
+   64 Expr: Expr PLUS . Expr
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    Expr      go to state 144
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 119
+
+   65 Expr: Expr MINUS . Expr
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    Expr      go to state 145
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 120
+
+   66 Expr: Expr MULTIPLICATION . Expr
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    Expr      go to state 146
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 121
+
+   67 Expr: Expr DIVISION . Expr
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    Expr      go to state 147
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 122
+
+   69 Expr: Expr LESS . Expr
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    Expr      go to state 148
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 123
+
+   70 Expr: Expr LESSEQUAL . Expr
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    Expr      go to state 149
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 124
+
+   71 Expr: Expr GREATER . Expr
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    Expr      go to state 150
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 125
+
+   72 Expr: Expr GREATEREQUAL . Expr
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    Expr      go to state 151
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 126
+
+   73 Expr: Expr EQUAL . Expr
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    Expr      go to state 152
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 127
+
+   74 Expr: Expr NOTEQUAL . Expr
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    Expr      go to state 153
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 128
+
+   81 Lvalue: Expr PERIOD . ID
+
+    ID  shift, and go to state 154
+
+
+State 129
+
+   80 Lvalue: Expr LEFTBRACKET . Expr RIGHTBRACKET
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    Expr      go to state 155
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 130
+
+   42 Stmt: ExprStar SEMICOLON .
+
+    $default  reduce using rule 42 (Stmt)
+
+
+State 131
+
+   59 Expr: Lvalue ASSIGNOP . Expr
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    Expr      go to state 156
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 132
+
+   53 ForStmt: FOR LEFTPAREN ExprStar . SEMICOLON Expr SEMICOLON ExprStar RIGHTPAREN Stmt
+
+    SEMICOLON  shift, and go to state 157
+
+
+State 133
+
+   50 IfStmt: IF LEFTPAREN Expr . RIGHTPAREN Stmt
+   51       | IF LEFTPAREN Expr . RIGHTPAREN Stmt ELSE Stmt
+   64 Expr: Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    PLUS            shift, and go to state 118
+    MINUS           shift, and go to state 119
+    MULTIPLICATION  shift, and go to state 120
+    DIVISION        shift, and go to state 121
+    LESS            shift, and go to state 122
+    LESSEQUAL       shift, and go to state 123
+    GREATER         shift, and go to state 124
+    GREATEREQUAL    shift, and go to state 125
+    EQUAL           shift, and go to state 126
+    NOTEQUAL        shift, and go to state 127
+    PERIOD          shift, and go to state 128
+    RIGHTPAREN      shift, and go to state 158
+    LEFTBRACKET     shift, and go to state 129
+
+
+State 134
+
+   76 Expr: NEWARRAY LEFTPAREN INTCONSTANT . COMMA Type RIGHTPAREN
+
+    COMMA  shift, and go to state 159
+
+
+State 135
+
+   56 PrintStmt: PRINTLN LEFTPAREN Exprs . RIGHTPAREN SEMICOLON
+   57 Exprs: Exprs . COMMA Expr
+
+    COMMA       shift, and go to state 160
+    RIGHTPAREN  shift, and go to state 161
+
+
+State 136
+
+   58 Exprs: Expr .
+   64 Expr: Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    PLUS            shift, and go to state 118
+    MINUS           shift, and go to state 119
+    MULTIPLICATION  shift, and go to state 120
+    DIVISION        shift, and go to state 121
+    LESS            shift, and go to state 122
+    LESSEQUAL       shift, and go to state 123
+    GREATER         shift, and go to state 124
+    GREATEREQUAL    shift, and go to state 125
+    EQUAL           shift, and go to state 126
+    NOTEQUAL        shift, and go to state 127
+    PERIOD          shift, and go to state 128
+    LEFTBRACKET     shift, and go to state 129
+
+    $default  reduce using rule 58 (Exprs)
+
+
+State 137
+
+   75 Expr: READLN LEFTPAREN RIGHTPAREN .
+
+    $default  reduce using rule 75 (Expr)
+
+
+State 138
+
+   55 ReturnStmt: RETURN ExprStar SEMICOLON .
+
+    $default  reduce using rule 55 (ReturnStmt)
+
+
+State 139
+
+   52 WhileStmt: WHILE LEFTPAREN Expr . RIGHTPAREN Stmt
+   64 Expr: Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    PLUS            shift, and go to state 118
+    MINUS           shift, and go to state 119
+    MULTIPLICATION  shift, and go to state 120
+    DIVISION        shift, and go to state 121
+    LESS            shift, and go to state 122
+    LESSEQUAL       shift, and go to state 123
+    GREATER         shift, and go to state 124
+    GREATEREQUAL    shift, and go to state 125
+    EQUAL           shift, and go to state 126
+    NOTEQUAL        shift, and go to state 127
+    PERIOD          shift, and go to state 128
+    RIGHTPAREN      shift, and go to state 162
+    LEFTBRACKET     shift, and go to state 129
+
+
+State 140
+
+   63 Expr: LEFTPAREN Expr RIGHTPAREN .
+
+    $default  reduce using rule 63 (Expr)
+
+
+State 141
+
+   83 Call: ID PERIOD ID . LEFTPAREN Actuals RIGHTPAREN
+
+    LEFTPAREN  shift, and go to state 163
+
+
+State 142
+
+   64 Expr: Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+   84 Actuals: Expr .
+   85        | Expr . COMMA Actuals
+
+    PLUS            shift, and go to state 118
+    MINUS           shift, and go to state 119
+    MULTIPLICATION  shift, and go to state 120
+    DIVISION        shift, and go to state 121
+    LESS            shift, and go to state 122
+    LESSEQUAL       shift, and go to state 123
+    GREATER         shift, and go to state 124
+    GREATEREQUAL    shift, and go to state 125
+    EQUAL           shift, and go to state 126
+    NOTEQUAL        shift, and go to state 127
+    COMMA           shift, and go to state 164
+    PERIOD          shift, and go to state 128
+    LEFTBRACKET     shift, and go to state 129
+
+    $default  reduce using rule 84 (Actuals)
+
+
+State 143
+
+   82 Call: ID LEFTPAREN Actuals . RIGHTPAREN
+
+    RIGHTPAREN  shift, and go to state 165
+
+
+State 144
+
+   64 Expr: Expr . PLUS Expr
+   64     | Expr PLUS Expr .
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    MULTIPLICATION  shift, and go to state 120
+    DIVISION        shift, and go to state 121
+    PERIOD          shift, and go to state 128
+    LEFTBRACKET     shift, and go to state 129
+
+    PERIOD       [reduce using rule 64 (Expr)]
+    LEFTBRACKET  [reduce using rule 64 (Expr)]
+    $default     reduce using rule 64 (Expr)
+
+
+State 145
+
+   64 Expr: Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   65     | Expr MINUS Expr .
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    MULTIPLICATION  shift, and go to state 120
+    DIVISION        shift, and go to state 121
+    PERIOD          shift, and go to state 128
+    LEFTBRACKET     shift, and go to state 129
+
+    PERIOD       [reduce using rule 65 (Expr)]
+    LEFTBRACKET  [reduce using rule 65 (Expr)]
+    $default     reduce using rule 65 (Expr)
+
+
+State 146
+
+   64 Expr: Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   66     | Expr MULTIPLICATION Expr .
+   67     | Expr . DIVISION Expr
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    PERIOD       shift, and go to state 128
+    LEFTBRACKET  shift, and go to state 129
+
+    PERIOD       [reduce using rule 66 (Expr)]
+    LEFTBRACKET  [reduce using rule 66 (Expr)]
+    $default     reduce using rule 66 (Expr)
+
+
+State 147
+
+   64 Expr: Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   67     | Expr DIVISION Expr .
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    PERIOD       shift, and go to state 128
+    LEFTBRACKET  shift, and go to state 129
+
+    PERIOD       [reduce using rule 67 (Expr)]
+    LEFTBRACKET  [reduce using rule 67 (Expr)]
+    $default     reduce using rule 67 (Expr)
+
+
+State 148
+
+   64 Expr: Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   69     | Expr . LESS Expr
+   69     | Expr LESS Expr .
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    PLUS            shift, and go to state 118
+    MINUS           shift, and go to state 119
+    MULTIPLICATION  shift, and go to state 120
+    DIVISION        shift, and go to state 121
+    PERIOD          shift, and go to state 128
+    LEFTBRACKET     shift, and go to state 129
+
+    LESS          error (nonassociative)
+    LESSEQUAL     error (nonassociative)
+    GREATER       error (nonassociative)
+    GREATEREQUAL  error (nonassociative)
+
+    PERIOD       [reduce using rule 69 (Expr)]
+    LEFTBRACKET  [reduce using rule 69 (Expr)]
+    $default     reduce using rule 69 (Expr)
+
+
+State 149
+
+   64 Expr: Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   70     | Expr LESSEQUAL Expr .
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    PLUS            shift, and go to state 118
+    MINUS           shift, and go to state 119
+    MULTIPLICATION  shift, and go to state 120
+    DIVISION        shift, and go to state 121
+    PERIOD          shift, and go to state 128
+    LEFTBRACKET     shift, and go to state 129
+
+    LESS          error (nonassociative)
+    LESSEQUAL     error (nonassociative)
+    GREATER       error (nonassociative)
+    GREATEREQUAL  error (nonassociative)
+
+    PERIOD       [reduce using rule 70 (Expr)]
+    LEFTBRACKET  [reduce using rule 70 (Expr)]
+    $default     reduce using rule 70 (Expr)
+
+
+State 150
+
+   64 Expr: Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   71     | Expr GREATER Expr .
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    PLUS            shift, and go to state 118
+    MINUS           shift, and go to state 119
+    MULTIPLICATION  shift, and go to state 120
+    DIVISION        shift, and go to state 121
+    PERIOD          shift, and go to state 128
+    LEFTBRACKET     shift, and go to state 129
+
+    LESS          error (nonassociative)
+    LESSEQUAL     error (nonassociative)
+    GREATER       error (nonassociative)
+    GREATEREQUAL  error (nonassociative)
+
+    PERIOD       [reduce using rule 71 (Expr)]
+    LEFTBRACKET  [reduce using rule 71 (Expr)]
+    $default     reduce using rule 71 (Expr)
+
+
+State 151
+
+   64 Expr: Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   72     | Expr GREATEREQUAL Expr .
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    PLUS            shift, and go to state 118
+    MINUS           shift, and go to state 119
+    MULTIPLICATION  shift, and go to state 120
+    DIVISION        shift, and go to state 121
+    PERIOD          shift, and go to state 128
+    LEFTBRACKET     shift, and go to state 129
+
+    LESS          error (nonassociative)
+    LESSEQUAL     error (nonassociative)
+    GREATER       error (nonassociative)
+    GREATEREQUAL  error (nonassociative)
+
+    PERIOD       [reduce using rule 72 (Expr)]
+    LEFTBRACKET  [reduce using rule 72 (Expr)]
+    $default     reduce using rule 72 (Expr)
+
+
+State 152
+
+   64 Expr: Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   73     | Expr EQUAL Expr .
+   74     | Expr . NOTEQUAL Expr
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    PLUS            shift, and go to state 118
+    MINUS           shift, and go to state 119
+    MULTIPLICATION  shift, and go to state 120
+    DIVISION        shift, and go to state 121
+    LESS            shift, and go to state 122
+    LESSEQUAL       shift, and go to state 123
+    GREATER         shift, and go to state 124
+    GREATEREQUAL    shift, and go to state 125
+    EQUAL           shift, and go to state 126
+    NOTEQUAL        shift, and go to state 127
+    PERIOD          shift, and go to state 128
+    LEFTBRACKET     shift, and go to state 129
+
+    PERIOD       [reduce using rule 73 (Expr)]
+    LEFTBRACKET  [reduce using rule 73 (Expr)]
+    $default     reduce using rule 73 (Expr)
+
+
+State 153
+
+   64 Expr: Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   74     | Expr NOTEQUAL Expr .
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    PLUS            shift, and go to state 118
+    MINUS           shift, and go to state 119
+    MULTIPLICATION  shift, and go to state 120
+    DIVISION        shift, and go to state 121
+    LESS            shift, and go to state 122
+    LESSEQUAL       shift, and go to state 123
+    GREATER         shift, and go to state 124
+    GREATEREQUAL    shift, and go to state 125
+    EQUAL           shift, and go to state 126
+    NOTEQUAL        shift, and go to state 127
+    PERIOD          shift, and go to state 128
+    LEFTBRACKET     shift, and go to state 129
+
+    PERIOD       [reduce using rule 74 (Expr)]
+    LEFTBRACKET  [reduce using rule 74 (Expr)]
+    $default     reduce using rule 74 (Expr)
+
+
+State 154
+
+   81 Lvalue: Expr PERIOD ID .
+
+    $default  reduce using rule 81 (Lvalue)
+
+
+State 155
+
+   64 Expr: Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   80       | Expr LEFTBRACKET Expr . RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    PLUS            shift, and go to state 118
+    MINUS           shift, and go to state 119
+    MULTIPLICATION  shift, and go to state 120
+    DIVISION        shift, and go to state 121
+    LESS            shift, and go to state 122
+    LESSEQUAL       shift, and go to state 123
+    GREATER         shift, and go to state 124
+    GREATEREQUAL    shift, and go to state 125
+    EQUAL           shift, and go to state 126
+    NOTEQUAL        shift, and go to state 127
+    PERIOD          shift, and go to state 128
+    LEFTBRACKET     shift, and go to state 129
+    RIGHTBRACKET    shift, and go to state 166
+
+
+State 156
+
+   59 Expr: Lvalue ASSIGNOP Expr .
+   64     | Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    PLUS            shift, and go to state 118
+    MINUS           shift, and go to state 119
+    MULTIPLICATION  shift, and go to state 120
+    DIVISION        shift, and go to state 121
+    LESS            shift, and go to state 122
+    LESSEQUAL       shift, and go to state 123
+    GREATER         shift, and go to state 124
+    GREATEREQUAL    shift, and go to state 125
+    EQUAL           shift, and go to state 126
+    NOTEQUAL        shift, and go to state 127
+    PERIOD          shift, and go to state 128
+    LEFTBRACKET     shift, and go to state 129
+
+    PERIOD       [reduce using rule 59 (Expr)]
+    LEFTBRACKET  [reduce using rule 59 (Expr)]
+    $default     reduce using rule 59 (Expr)
+
+
+State 157
+
+   53 ForStmt: FOR LEFTPAREN ExprStar SEMICOLON . Expr SEMICOLON ExprStar RIGHTPAREN Stmt
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    Expr      go to state 167
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 158
+
+   50 IfStmt: IF LEFTPAREN Expr RIGHTPAREN . Stmt
+   51       | IF LEFTPAREN Expr RIGHTPAREN . Stmt ELSE Stmt
+
+    BREAK            shift, and go to state 72
+    FOR              shift, and go to state 73
+    IF               shift, and go to state 74
+    NEWARRAY         shift, and go to state 75
+    PRINTLN          shift, and go to state 76
+    READLN           shift, and go to state 77
+    RETURN           shift, and go to state 78
+    WHILE            shift, and go to state 79
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    LEFTBRACE        shift, and go to state 61
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    $default  reduce using rule 78 (ExprStar)
+
+    StmtBlock   go to state 87
+    Stmt        go to state 168
+    IfStmt      go to state 90
+    WhileStmt   go to state 91
+    ForStmt     go to state 92
+    BreakStmt   go to state 93
+    ReturnStmt  go to state 94
+    PrintStmt   go to state 95
+    Expr        go to state 96
+    ExprStar    go to state 97
+    Lvalue      go to state 98
+    Call        go to state 99
+    Constant    go to state 100
+
+
+State 159
+
+   76 Expr: NEWARRAY LEFTPAREN INTCONSTANT COMMA . Type RIGHTPAREN
+
+    BOOLEAN  shift, and go to state 1
+    DOUBLE   shift, and go to state 3
+    INT      shift, and go to state 4
+    STRING   shift, and go to state 6
+    ID       shift, and go to state 8
+
+    Type  go to state 169
+
+
+State 160
+
+   57 Exprs: Exprs COMMA . Expr
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    Expr      go to state 170
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 161
+
+   56 PrintStmt: PRINTLN LEFTPAREN Exprs RIGHTPAREN . SEMICOLON
+
+    SEMICOLON  shift, and go to state 171
+
+
+State 162
+
+   52 WhileStmt: WHILE LEFTPAREN Expr RIGHTPAREN . Stmt
+
+    BREAK            shift, and go to state 72
+    FOR              shift, and go to state 73
+    IF               shift, and go to state 74
+    NEWARRAY         shift, and go to state 75
+    PRINTLN          shift, and go to state 76
+    READLN           shift, and go to state 77
+    RETURN           shift, and go to state 78
+    WHILE            shift, and go to state 79
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    LEFTBRACE        shift, and go to state 61
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    $default  reduce using rule 78 (ExprStar)
+
+    StmtBlock   go to state 87
+    Stmt        go to state 172
+    IfStmt      go to state 90
+    WhileStmt   go to state 91
+    ForStmt     go to state 92
+    BreakStmt   go to state 93
+    ReturnStmt  go to state 94
+    PrintStmt   go to state 95
+    Expr        go to state 96
+    ExprStar    go to state 97
+    Lvalue      go to state 98
+    Call        go to state 99
+    Constant    go to state 100
+
+
+State 163
+
+   83 Call: ID PERIOD ID LEFTPAREN . Actuals RIGHTPAREN
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    $default  reduce using rule 86 (Actuals)
+
+    Expr      go to state 142
+    Lvalue    go to state 98
+    Call      go to state 99
+    Actuals   go to state 173
+    Constant  go to state 100
+
+
+State 164
+
+   85 Actuals: Expr COMMA . Actuals
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    $default  reduce using rule 86 (Actuals)
+
+    Expr      go to state 142
+    Lvalue    go to state 98
+    Call      go to state 99
+    Actuals   go to state 174
+    Constant  go to state 100
+
+
+State 165
+
+   82 Call: ID LEFTPAREN Actuals RIGHTPAREN .
+
+    $default  reduce using rule 82 (Call)
+
+
+State 166
+
+   80 Lvalue: Expr LEFTBRACKET Expr RIGHTBRACKET .
+
+    $default  reduce using rule 80 (Lvalue)
+
+
+State 167
+
+   53 ForStmt: FOR LEFTPAREN ExprStar SEMICOLON Expr . SEMICOLON ExprStar RIGHTPAREN Stmt
+   64 Expr: Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    PLUS            shift, and go to state 118
+    MINUS           shift, and go to state 119
+    MULTIPLICATION  shift, and go to state 120
+    DIVISION        shift, and go to state 121
+    LESS            shift, and go to state 122
+    LESSEQUAL       shift, and go to state 123
+    GREATER         shift, and go to state 124
+    GREATEREQUAL    shift, and go to state 125
+    EQUAL           shift, and go to state 126
+    NOTEQUAL        shift, and go to state 127
+    SEMICOLON       shift, and go to state 175
+    PERIOD          shift, and go to state 128
+    LEFTBRACKET     shift, and go to state 129
+
+
+State 168
+
+   50 IfStmt: IF LEFTPAREN Expr RIGHTPAREN Stmt .
+   51       | IF LEFTPAREN Expr RIGHTPAREN Stmt . ELSE Stmt
+
+    ELSE  shift, and go to state 176
+
+    ELSE      [reduce using rule 50 (IfStmt)]
+    $default  reduce using rule 50 (IfStmt)
+
+
+State 169
+
+   15 Type: Type . LEFTBRACKET RIGHTBRACKET
+   76 Expr: NEWARRAY LEFTPAREN INTCONSTANT COMMA Type . RIGHTPAREN
+
+    RIGHTPAREN   shift, and go to state 177
+    LEFTBRACKET  shift, and go to state 23
+
+
+State 170
+
+   57 Exprs: Exprs COMMA Expr .
+   64 Expr: Expr . PLUS Expr
+   65     | Expr . MINUS Expr
+   66     | Expr . MULTIPLICATION Expr
+   67     | Expr . DIVISION Expr
+   69     | Expr . LESS Expr
+   70     | Expr . LESSEQUAL Expr
+   71     | Expr . GREATER Expr
+   72     | Expr . GREATEREQUAL Expr
+   73     | Expr . EQUAL Expr
+   74     | Expr . NOTEQUAL Expr
+   80 Lvalue: Expr . LEFTBRACKET Expr RIGHTBRACKET
+   81       | Expr . PERIOD ID
+
+    PLUS            shift, and go to state 118
+    MINUS           shift, and go to state 119
+    MULTIPLICATION  shift, and go to state 120
+    DIVISION        shift, and go to state 121
+    LESS            shift, and go to state 122
+    LESSEQUAL       shift, and go to state 123
+    GREATER         shift, and go to state 124
+    GREATEREQUAL    shift, and go to state 125
+    EQUAL           shift, and go to state 126
+    NOTEQUAL        shift, and go to state 127
+    PERIOD          shift, and go to state 128
+    LEFTBRACKET     shift, and go to state 129
+
+    $default  reduce using rule 57 (Exprs)
+
+
+State 171
+
+   56 PrintStmt: PRINTLN LEFTPAREN Exprs RIGHTPAREN SEMICOLON .
+
+    $default  reduce using rule 56 (PrintStmt)
+
+
+State 172
+
+   52 WhileStmt: WHILE LEFTPAREN Expr RIGHTPAREN Stmt .
+
+    $default  reduce using rule 52 (WhileStmt)
+
+
+State 173
+
+   83 Call: ID PERIOD ID LEFTPAREN Actuals . RIGHTPAREN
+
+    RIGHTPAREN  shift, and go to state 178
+
+
+State 174
+
+   85 Actuals: Expr COMMA Actuals .
+
+    $default  reduce using rule 85 (Actuals)
+
+
+State 175
+
+   53 ForStmt: FOR LEFTPAREN ExprStar SEMICOLON Expr SEMICOLON . ExprStar RIGHTPAREN Stmt
+
+    NEWARRAY         shift, and go to state 75
+    READLN           shift, and go to state 77
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    $default  reduce using rule 78 (ExprStar)
+
+    Expr      go to state 96
+    ExprStar  go to state 179
+    Lvalue    go to state 98
+    Call      go to state 99
+    Constant  go to state 100
+
+
+State 176
+
+   51 IfStmt: IF LEFTPAREN Expr RIGHTPAREN Stmt ELSE . Stmt
+
+    BREAK            shift, and go to state 72
+    FOR              shift, and go to state 73
+    IF               shift, and go to state 74
+    NEWARRAY         shift, and go to state 75
+    PRINTLN          shift, and go to state 76
+    READLN           shift, and go to state 77
+    RETURN           shift, and go to state 78
+    WHILE            shift, and go to state 79
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    LEFTBRACE        shift, and go to state 61
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    $default  reduce using rule 78 (ExprStar)
+
+    StmtBlock   go to state 87
+    Stmt        go to state 180
+    IfStmt      go to state 90
+    WhileStmt   go to state 91
+    ForStmt     go to state 92
+    BreakStmt   go to state 93
+    ReturnStmt  go to state 94
+    PrintStmt   go to state 95
+    Expr        go to state 96
+    ExprStar    go to state 97
+    Lvalue      go to state 98
+    Call        go to state 99
+    Constant    go to state 100
+
+
+State 177
+
+   76 Expr: NEWARRAY LEFTPAREN INTCONSTANT COMMA Type RIGHTPAREN .
+
+    $default  reduce using rule 76 (Expr)
+
+
+State 178
+
+   83 Call: ID PERIOD ID LEFTPAREN Actuals RIGHTPAREN .
+
+    $default  reduce using rule 83 (Call)
+
+
+State 179
+
+   53 ForStmt: FOR LEFTPAREN ExprStar SEMICOLON Expr SEMICOLON ExprStar . RIGHTPAREN Stmt
+
+    RIGHTPAREN  shift, and go to state 181
+
+
+State 180
+
+   51 IfStmt: IF LEFTPAREN Expr RIGHTPAREN Stmt ELSE Stmt .
+
+    $default  reduce using rule 51 (IfStmt)
+
+
+State 181
+
+   53 ForStmt: FOR LEFTPAREN ExprStar SEMICOLON Expr SEMICOLON ExprStar RIGHTPAREN . Stmt
+
+    BREAK            shift, and go to state 72
+    FOR              shift, and go to state 73
+    IF               shift, and go to state 74
+    NEWARRAY         shift, and go to state 75
+    PRINTLN          shift, and go to state 76
+    READLN           shift, and go to state 77
+    RETURN           shift, and go to state 78
+    WHILE            shift, and go to state 79
+    MINUS            shift, and go to state 80
+    LEFTPAREN        shift, and go to state 81
+    LEFTBRACE        shift, and go to state 61
+    INTCONSTANT      shift, and go to state 82
+    DOUBLECONSTANT   shift, and go to state 83
+    STRINGCONSTANT   shift, and go to state 84
+    BOOLEANCONSTANT  shift, and go to state 85
+    ID               shift, and go to state 86
+
+    $default  reduce using rule 78 (ExprStar)
+
+    StmtBlock   go to state 87
+    Stmt        go to state 182
+    IfStmt      go to state 90
+    WhileStmt   go to state 91
+    ForStmt     go to state 92
+    BreakStmt   go to state 93
+    ReturnStmt  go to state 94
+    PrintStmt   go to state 95
+    Expr        go to state 96
+    ExprStar    go to state 97
+    Lvalue      go to state 98
+    Call        go to state 99
+    Constant    go to state 100
+
+
+State 182
+
+   53 ForStmt: FOR LEFTPAREN ExprStar SEMICOLON Expr SEMICOLON ExprStar RIGHTPAREN Stmt .
+
+    $default  reduce using rule 53 (ForStmt)

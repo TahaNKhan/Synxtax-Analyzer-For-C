@@ -1,0 +1,8 @@
+class test implements bigtest{
+
+void main(){
+	double h;
+	int j;
+	return;
+}
+}
