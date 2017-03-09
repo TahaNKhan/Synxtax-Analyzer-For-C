@@ -49,7 +49,7 @@
 %token STRINGCONSTANT
 %token BOOLEANCONSTANT
 %token ID
-%right ASSIGNOP
+%token ASSIGNOP
 %left OR
 %left AND
 %right EQUAL NOTEQUAL
