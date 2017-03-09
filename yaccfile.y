@@ -49,13 +49,18 @@
 %token STRINGCONSTANT
 %token BOOLEANCONSTANT
 %token ID
-%left ASSIGNOP
-%left OR
-%left AND
-%right EQUAL NOTEQUAL
+
+%left LEFTBRACKET
+%left COMMA
+%right ASSIGNOP
+%left PERIOD
 %nonassoc LESS GREATER LESSEQUAL GREATEREQUAL
+%left MULTIPLICATION DIVISION MOD
 %left PLUS MINUS
-%left MULTIPLICATION DIVISION
+%left EQUAL NOTEQUAL
+
+
+
 %%
 Program: Decl Program									{printf("[Reduce %i]",yyn);}
 	   | Decl											{printf("[Reduce %i]",yyn);} 
