@@ -49,7 +49,7 @@
 %token STRINGCONSTANT
 %token BOOLEANCONSTANT
 %token ID
-%left ASSIGNOP
+%right ASSIGNOP
 %left OR
 %left AND
 %right EQUAL NOTEQUAL
@@ -57,7 +57,7 @@
 %left PLUS MINUS
 %left MULTIPLICATION DIVISION
 %%
-Program: Decl Program									{printf("[Reduce %i]",yyn);}
+Program: Decl Program 									{printf("[Reduce %i]",yyn);}
 	   | Decl											{printf("[Reduce %i]",yyn);} 
 	   ;
 Decl: VariableDecl 										{printf("[Reduce %i]",yyn);} 
@@ -65,11 +65,8 @@ Decl: VariableDecl 										{printf("[Reduce %i]",yyn);}
 	| ClassDecl											{printf("[Reduce %i]",yyn);} 
 	| InterfaceDecl										{printf("[Reduce %i]",yyn);} 
 	;
-
-VariableDecl1 : VariableDecl VariableDecl1				{printf("[Reduce %i]",yyn);}
-			  |											{printf("[Reduce %i]",yyn);}
-			  ;
-VariableDecl : Variable SEMICOLON						{printf("[Reduce %i]",yyn);}
+VariableDecl : Variable SEMICOLON VariableDecl			{printf("[Reduce %i]",yyn);}
+			 | 
 			 ; 
 Variable: Type ID										{printf("[Reduce %i]",yyn);}
 		;
@@ -80,12 +77,12 @@ Type: INT												{printf("[Reduce %i]",yyn);}
 	| Type LEFTBRACKET RIGHTBRACKET						{printf("[Reduce %i]",yyn);}
 	| ID												{printf("[Reduce %i]",yyn);}
 	;
-FunctionDecl : Type ID LEFTPAREN Formals RIGHTPAREN StmtBlock 				{printf("[Reduce %i]",yyn);}
-			 | VOID ID LEFTPAREN Formals RIGHTPAREN StmtBlock				{printf("[Reduce %i]",yyn);}
+FunctionDecl : Type ID LEFTPAREN Formals RIGHTPAREN StmtBlock {printf("[Reduce %i]",yyn);}
+			 | VOID ID LEFTPAREN Formals RIGHTPAREN StmtBlock {printf("[Reduce %i]",yyn);}
 			 ;
-Formals : Formals COMMA Variable											{printf("[Reduce %i]",yyn);} 
-		| Variable 				 											{printf("[Reduce %i]",yyn);}
-		| 																	{printf("[Reduce %i]",yyn);}
+Formals : Formals COMMA Variable						{printf("[Reduce %i]",yyn);} 
+		| Variable 				 						{printf("[Reduce %i]",yyn);}
+		| 												{printf("[Reduce %i]",yyn);}
 		;
 ClassDecl : CLASS ID  Extends Implements LEFTBRACE Field RIGHTBRACE			{printf("[Reduce %i]",yyn);}
 		  ;
@@ -100,7 +97,6 @@ ids : ID COMMA ids															{printf("[Reduce %i]",yyn);}
 	;
 Field : VariableDecl														{printf("[Reduce %i]",yyn);}
 	  | FunctionDecl														{printf("[Reduce %i]",yyn);}
-	  | 																	{printf("[Reduce %i]",yyn);}
 	  ;
 InterfaceDecl : INTERFACE ID LEFTBRACE Prototypes RIGHTBRACE 				{printf("[Reduce %i]",yyn);} 
     		  | INTERFACE ID LEFTBRACE RIGHTBRACE 							{printf("[Reduce %i]",yyn);}
@@ -114,13 +110,13 @@ Prototype: Type ID LEFTPAREN Formals RIGHTPAREN SEMICOLON 					{printf("[Reduce 
     	 | VOID ID LEFTPAREN Formals RIGHTPAREN SEMICOLON 					{printf("[Reduce %i]",yyn);}
     	 ;
 
-StmtBlock: LEFTBRACE VariableDecl1 Stmts RIGHTBRACE 						{printf("[Reduce %i]",yyn);}
+StmtBlock: LEFTBRACE VariableDecl Stmts RIGHTBRACE 							{printf("[Reduce %i]",yyn);}
    		 ;
 Stmts : Stmt Stmts															{printf("[Reduce %i]",yyn);}
 	  | Stmt 																{printf("[Reduce %i]",yyn);}
 	  | 																	{printf("[Reduce %i]",yyn);}
 	  ;
-Stmt : ExprStar SEMICOLON													{printf("[Reduce %i]",yyn);}
+Stmt : ExprNoExpr SEMICOLON													{printf("[Reduce %i]",yyn);}
 	 | IfStmt																{printf("[Reduce %i]",yyn);}
 	 | WhileStmt															{printf("[Reduce %i]",yyn);}
 	 | ForStmt																{printf("[Reduce %i]",yyn);}
@@ -129,26 +125,25 @@ Stmt : ExprStar SEMICOLON													{printf("[Reduce %i]",yyn);}
 	 | PrintStmt															{printf("[Reduce %i]",yyn);}
 	 | StmtBlock															{printf("[Reduce %i]",yyn);}
 	 ;
+ExprNoExpr : Expr															{ printf("[Reduce %i]",yyn);}
+		   | 																{printf("[Reduce %i]",yyn);}
+		   ;
 IfStmt : IF LEFTPAREN Expr RIGHTPAREN Stmt									{printf("[Reduce %i]",yyn);}
 	   | IF LEFTPAREN Expr RIGHTPAREN Stmt ELSE Stmt						{printf("[Reduce %i]",yyn);}
 	   ;
 WhileStmt : WHILE LEFTPAREN Expr RIGHTPAREN Stmt							{printf("[Reduce %i]",yyn);}
 		  ;
-ForStmt : FOR LEFTPAREN ExprStar SEMICOLON Expr SEMICOLON ExprStar RIGHTPAREN Stmt	{printf("[Reduce %i]",yyn);}
+ForStmt : FOR LEFTPAREN ExprNoExpr SEMICOLON Expr SEMICOLON ExprNoExpr RIGHTPAREN Stmt	{printf("[Reduce %i]",yyn);}
 		;
-BreakStmt : BREAK SEMICOLON 												{}
+BreakStmt : BREAK SEMICOLON 												{printf("[Reduce %i]",yyn);}
 		  ;
-ReturnStmt: RETURN ExprStar SEMICOLON										{printf("[Reduce %i]",yyn);} 
+ReturnStmt: RETURN ExprNoExpr SEMICOLON										{printf("[Reduce %i]",yyn);} 
     	  ;
-ExprStar : Expr																{ printf("[Reduce %i]",yyn);}
-		 | 																	{printf("[Reduce %i]",yyn);}
-		 ;
 PrintStmt : PRINTLN LEFTPAREN Exprs RIGHTPAREN SEMICOLON 					{printf("[Reduce %i]",yyn);}
 		  ;
 Exprs	  : Exprs COMMA Expr												{printf("[Reduce %i]",yyn);}
-		  | Expr 															{ printf("[Reduce %i]",yyn);}
+		  | Expr 															{printf("[Reduce %i]",yyn);}
 		  ;
-
 Expr : Lvalue ASSIGNOP Expr 												{printf("[Reduce %i]",yyn);} 
      | Constant																{printf("[Reduce %i]",yyn);} 
      | Lvalue 																{printf("[Reduce %i]",yyn);} 
@@ -168,7 +163,6 @@ Expr : Lvalue ASSIGNOP Expr 												{printf("[Reduce %i]",yyn);}
      | READLN LEFTPAREN RIGHTPAREN 											{printf("[Reduce %i]",yyn);}
      | NEWARRAY LEFTPAREN INTCONSTANT COMMA Type RIGHTPAREN 				{printf("[Reduce %i]",yyn);}
      ;
-
 Lvalue : ID																	{printf("[Reduce %i]",yyn);}
 	   | Expr LEFTBRACKET Expr RIGHTBRACKET									{printf("[Reduce %i]",yyn);}
 	   | Expr PERIOD ID														{printf("[Reduce %i]",yyn);}
