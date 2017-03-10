@@ -1430,6 +1430,7 @@ yybackup:
 
   /* Shift the lookahead token.  */
   YY_SYMBOL_PRINT ("Shifting", yytoken, &yylval, &yylloc);
+  printf("[shift]");
 
   /* Discard the shifted token.  */
   yychar = YYEMPTY;
@@ -1475,325 +1476,325 @@ yyreduce:
     {
         case 2:
 #line 67 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1480 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 3:
 #line 68 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1486 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 4:
 #line 70 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1492 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 5:
 #line 71 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1498 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
 #line 72 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1504 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
 #line 73 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1510 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
 #line 75 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1516 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
 #line 77 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1522 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
 #line 79 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1528 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
 #line 80 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1534 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
 #line 81 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1540 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
 #line 82 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1546 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
 #line 83 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1552 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
 #line 84 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1558 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
 #line 86 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1564 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
 #line 87 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1570 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
 #line 89 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1576 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 19:
 #line 90 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1582 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 20:
 #line 91 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1588 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 21:
 #line 93 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1594 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 22:
 #line 95 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1600 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
 #line 96 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1606 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 24:
 #line 98 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1612 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 25:
 #line 99 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1618 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
 #line 101 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1624 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 27:
 #line 102 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1630 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 28:
 #line 104 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1636 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 29:
 #line 105 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1642 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 30:
 #line 107 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1648 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 31:
 #line 108 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1654 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 32:
 #line 109 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1660 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 33:
 #line 111 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1666 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 34:
 #line 112 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1672 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 35:
 #line 115 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1678 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 36:
 #line 116 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1684 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 37:
 #line 119 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1690 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 38:
 #line 120 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1696 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 39:
 #line 123 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1702 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 40:
 #line 125 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1708 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 41:
 #line 126 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1714 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 42:
 #line 128 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1720 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 43:
 #line 129 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1726 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 44:
 #line 131 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1732 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 45:
 #line 132 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1738 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 46:
 #line 133 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1744 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 47:
 #line 134 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1750 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 48:
 #line 135 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1756 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 49:
 #line 136 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1762 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 50:
 #line 137 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1768 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 51:
 #line 138 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1774 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 52:
 #line 140 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1780 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 53:
 #line 141 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1786 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 54:
 #line 143 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1792 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 55:
 #line 145 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1798 "y.tab.c" /* yacc.c:1646  */
     break;
 
@@ -1805,211 +1806,211 @@ yyreduce:
 
   case 57:
 #line 149 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1810 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 58:
 #line 151 "yaccfile.y" /* yacc.c:1646  */
-    { printf("[Reduce %i]",yyn);}
+    { printf("[reduce %i]",yyn);}
 #line 1816 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 59:
 #line 152 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1822 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 60:
 #line 154 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1828 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 61:
 #line 156 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1834 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 62:
 #line 157 "yaccfile.y" /* yacc.c:1646  */
-    { printf("[Reduce %i]",yyn);}
+    { printf("[reduce %i]",yyn);}
 #line 1840 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 63:
 #line 160 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1846 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 64:
 #line 161 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1852 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 65:
 #line 162 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1858 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 66:
 #line 163 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1864 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 67:
 #line 164 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1870 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 68:
 #line 165 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1876 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 69:
 #line 166 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1882 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 70:
 #line 167 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1888 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 71:
 #line 168 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1894 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 72:
 #line 169 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1900 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 73:
 #line 170 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1906 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 74:
 #line 171 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1912 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 75:
 #line 172 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1918 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 76:
 #line 173 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1924 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 77:
 #line 174 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1930 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 78:
 #line 175 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1936 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 79:
 #line 176 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1942 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 80:
 #line 177 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1948 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 81:
 #line 180 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1954 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 82:
 #line 181 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1960 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 83:
 #line 182 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1966 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 84:
 #line 184 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1972 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 85:
 #line 185 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1978 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 86:
 #line 187 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1984 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 87:
 #line 188 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1990 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 88:
 #line 190 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 1996 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 89:
 #line 191 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 2002 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 90:
 #line 192 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 2008 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 91:
 #line 193 "yaccfile.y" /* yacc.c:1646  */
-    {printf("[Reduce %i]",yyn);}
+    {printf("[reduce %i]",yyn);}
 #line 2014 "y.tab.c" /* yacc.c:1646  */
     break;
 
@@ -2193,6 +2194,7 @@ yyerrlab1:
 | yyacceptlab -- YYACCEPT comes here.  |
 `-------------------------------------*/
 yyacceptlab:
+  printf("\n[accept]\n");
   yyresult = 0;
   goto yyreturn;
 
@@ -2252,7 +2254,7 @@ int main() {
 }
 
 void yyerror(char *s){
-    printf("error: %s\n", s);
+    printf("\n[reject]\n");
 }
 
 
